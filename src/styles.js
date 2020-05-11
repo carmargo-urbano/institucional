@@ -11,6 +11,11 @@ export const HeaderStyle = styled.div`
   width:100%;
   height: 50px;
 
+  &.sticky {
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+  }
+
   .logo {
     max-width: 100%;
     max-height: 30px;

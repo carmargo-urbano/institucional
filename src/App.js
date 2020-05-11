@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import logo from './logo.png';
 import {
   HeaderStyle,
@@ -20,6 +20,53 @@ import camargoImage from './images/camargo.jpeg';
 import urbanoImage from './images/urbano.jpeg';
 
 function App() {
+
+  const useSticky = () => {
+    const [isSticky, setSticky] = useState(false);
+    const element = useRef(null);
+
+    useEffect(() => {
+      const handleScroll = () => {
+        console.log(window.scrollY);
+        console.log(element.current.getBoundingClientRect().bottom);
+        console.log('-------');
+
+        // window.scrollY > element.current.getBoundingClientRect().bottom
+        //   ? setSticky(true)
+        //   : setSticky(false)
+        window.scrollY > 50
+          ? setSticky(true)
+          : setSticky(false)
+      }
+
+      // This function handle the scroll performance issue
+      const debounce = (func, wait = 20, immediate = true) => {
+        let timeOut;
+        return () => {
+          let context = this,
+            args = arguments
+          const later = () => {
+            timeOut = null
+            if (!immediate) func.apply(context, args)
+          }
+          const callNow = immediate && !timeOut
+          clearTimeout(timeOut)
+          timeOut = setTimeout(later, wait)
+          if (callNow) func.apply(context, args)
+        }
+      }
+
+      window.addEventListener("scroll", debounce(handleScroll))
+
+      return () => {
+        window.removeEventListener("scroll", () => handleScroll)
+      }
+    }, [])
+
+    return { isSticky, element }
+  };
+
+  const { isSticky, element } = useSticky()
 
   const DEFAULT_VALUES = {
     name: '',
@@ -247,7 +294,7 @@ function App() {
 
   return (
     <>
-      <HeaderStyle>
+      <HeaderStyle sticky={isSticky} className={isSticky ? "sticky" : ""}>
         <img src={logo} className="logo" alt="logo" />
         <ul>
           <li onClick={() => handleMenuClick('home')}>Home</li>
@@ -258,7 +305,7 @@ function App() {
         </ul>
       </HeaderStyle>
 
-      <HomeStyle id="home">
+      <HomeStyle ref={element} id="home">
         <div className="window">
           <div className="row">
             <div className="column">
