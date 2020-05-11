@@ -273,7 +273,7 @@ function App() {
 
               <p><strong>QuickPick oferece a você sua loja virtual com um sistema de Entrega e Retirada.</strong></p>
 
-              <button className="start">Começar agora</button>
+              <button className="start" onClick={() => handleMenuClick('start')}>Começar agora</button>
             </div>
           </div>
           <div className="row"><img src={mainImage} className="main-image" alt="Imagem principal" /></div>
