@@ -27,10 +27,6 @@ function App() {
 
     useEffect(() => {
       const handleScroll = () => {
-        console.log(window.scrollY);
-        console.log(element.current.getBoundingClientRect().bottom);
-        console.log('-------');
-
         // window.scrollY > element.current.getBoundingClientRect().bottom
         //   ? setSticky(true)
         //   : setSticky(false)
@@ -310,13 +306,15 @@ function App() {
           <div className="row">
             <div className="column">
               <h1>
-                Venda <span>On-line</span> ?<br />
+                Venda <span>On-line</span>?<br />
                 venda rápida, fácil e segura.
               </h1>
 
               <div className="divider"></div>
 
               <p>Hoje, mais do que nunca, os consumidores procuram produtos e pontos de venda on-line, mas... e os produtos em suas lojas, eles aparecem nessas pesquisas? Não?</p>
+
+              <div className="hide-desktop"><img src={mainImage} alt="Imagem principal" /></div>
 
               <p><strong>QuickPick oferece a você sua loja virtual com um sistema de Entrega e Retirada.</strong></p>
 
@@ -454,19 +452,19 @@ function App() {
               <h2>Selecione abaixo pergunta por pergunta para finalizar o questionário.</h2>
 
               <div className="row">
-                <div className={"question question1 " + (showQuestion === 'question1' ? 'selected' : '')} onClick={() => handleSelectQuestions('question1')}>
+                <div className={"question question1 " + (showQuestion === 'question1' && setp1Finished ? 'selected finished' : (showQuestion === 'question1') ? 'selected' : (setp1Finished) ? 'finished' : '')} onClick={() => handleSelectQuestions('question1')}>
                   <p className={(setp1Finished) ? 'number finished' : 'number'}>1</p>
                   <p className="question">Em qual desta opções seu modelo de negócio se encaixa?</p>
                 </div>
-                <div className={"question question2 " + (showQuestion === 'question2' ? 'selected' : '')} onClick={() => handleSelectQuestions('question2')}>
+                <div className={"question question2 " + (showQuestion === 'question2' && setp2Finished ? 'selected finished' : (showQuestion === 'question2') ? 'selected' : (setp2Finished) ? 'finished' : '')} onClick={() => handleSelectQuestions('question2')}>
                   <p className={(setp2Finished) ? 'number finished' : 'number'}>2</p>
                   <p className="question">Em quais redes socias você divulga seus produtos?</p>
                 </div>
-                <div className={"question question3 " + (showQuestion === 'question3' ? 'selected' : '')} onClick={() => handleSelectQuestions('question3')}>
+                <div className={"question question3 " + (showQuestion === 'question3' && setp3Finished ? 'selected finished' : (showQuestion === 'question3') ? 'selected' : (setp3Finished) ? 'finished' : '')} onClick={() => handleSelectQuestions('question3')}>
                   <p className={(setp3Finished) ? 'number finished' : 'number'}>3</p>
                   <p className="question">Qual desses serviços você oferece atualmente?</p>
                 </div>
-                <div className={"question question4 " + (showQuestion === 'question4' ? 'selected' : '')} onClick={() => handleSelectQuestions('question4')}>
+                <div className={"question question4 " + (showQuestion === 'question4' && setp4Finished ? 'selected finished' : (showQuestion === 'question4') ? 'selected' : (setp4Finished) ? 'finished' : '')} onClick={() => handleSelectQuestions('question4')}>
                   <p className={(setp4Finished) ? 'number finished' : 'number'}>4</p>
                   <p className="question">Possui Loja Virtual?</p>
                 </div>
@@ -590,10 +588,12 @@ function App() {
       </StartStyle>
 
       <ContactStyle id="contact">
-        <h1 className="content">Deixe-nos saber o que você pensa</h1>
-        <div className="divider"></div>
+        <div className="wrapper-title">
+          <h1 className="content">Deixe-nos saber o que você pensa</h1>
+          <div className="divider"></div>
 
-        <p className="content">Se desejar, entre em contato conosco enviando uma mensagem, responderemos prontamente.</p>
+          <p className="content">Se desejar, entre em contato conosco enviando uma mensagem, responderemos prontamente.</p>
+        </div>
 
         <div className="column wrapper-contact">
           <div className="tabs row">
