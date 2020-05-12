@@ -203,6 +203,8 @@ function App() {
         window.location.reload();
       } else if (response.status === 'fail'){
         alert('Falha ao enviar suas informações, você pode entrar em contato clicando no menu CONTATO!');
+      } else {
+        alert('Falha ao enviar suas informações, você pode entrar em contato pelo telefone!');
       }
       setSending(false);
     });
@@ -278,11 +280,13 @@ function App() {
     })
     .then((response) => (response.json()))
     .then((response) => {
-      if (response.status === 'success'){
+      if (response.status === 'success') {
         alert('Em breve entraremos em contato com você');
         window.location.reload();
-      } else if (response.status === 'fail'){
+      } else if (response.status === 'fail') {
         alert('Falha ao enviar suas informações, você pode entrar em contato clicando no menu CONTATO!');
+      } else {
+        alert('Falha ao enviar suas informações, você pode entrar em contato pelo telefone!');
       }
       setSending(false);
     });
