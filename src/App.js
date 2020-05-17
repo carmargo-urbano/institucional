@@ -9,7 +9,8 @@ import {
   ContactStyle
 } from './styles';
 
-import mainImage from './images/main-image.svg';
+import mainImageFloating from './images/floating.gif';
+// import mainImage from './images/main-image.svg';
 import requestImage from './images/img_pedido.svg';
 import scheduleImage from './images/img_schedule.svg';
 import takeImage from './images/img_retiro.svg';
@@ -66,6 +67,7 @@ function App() {
 
   const DEFAULT_VALUES = {
     name: '',
+    email: '',
     phone: '',
     company: '',
     city: '',
@@ -318,14 +320,14 @@ function App() {
 
               <p>Hoje, mais do que nunca, os consumidores procuram produtos e pontos de venda on-line, mas... e os produtos em suas lojas, eles aparecem nessas pesquisas? Não?</p>
 
-              <div className="hide-desktop"><img src={mainImage} alt="Imagem principal" /></div>
+              <div className="hide-desktop"><img src={mainImageFloating} alt="Imagem principal" /></div>
 
               <p><strong>QuickPick oferece a você sua loja virtual com um sistema de Entrega e Retirada.</strong></p>
 
               <button className="start" onClick={() => handleMenuClick('start')}>Começar agora</button>
             </div>
           </div>
-          <div className="row"><img src={mainImage} className="main-image" alt="Imagem principal" /></div>
+          <div className="row"><img src={mainImageFloating} className="main-image" alt="Imagem principal" /></div>
         </div>
       </HomeStyle>
 
@@ -426,6 +428,10 @@ function App() {
                   <input type="text" id="name" name="name" onChange={(e) => changeFormValue(e)} />
                 </div>
                 <div className="column">
+                  <label htmlFor="email">Email</label>
+                  <input type="text" id="email1" name="email" onChange={(e) => changeFormValue(e)} />
+                </div>
+                <div className="column">
                   <label htmlFor="phone">Telefone (Whatsapp)</label>
                   <input type="text" id="phone" name="phone" onChange={(e) => changeFormValue(e)} />
                 </div>
@@ -433,15 +439,15 @@ function App() {
                   <label htmlFor="company">Nome do seu estabelecimento</label>
                   <input type="text" id="company" name="company" onChange={(e) => changeFormValue(e)} />
                 </div>
-                <div className="column">
-                  <label htmlFor="city">Cidade</label>
-                  <input type="text" id="city" name="city" onChange={(e) => changeFormValue(e)} />
-                </div>
               </div>
               <div className="row">
                 <div className="column">
                   <label htmlFor="address">Endereço completo</label>
                   <input type="text" id="address" name="address" onChange={(e) => changeFormValue(e)} />
+                </div>
+                <div className="column">
+                  <label htmlFor="city">Cidade</label>
+                  <input type="text" id="city" name="city" onChange={(e) => changeFormValue(e)} />
                 </div>
                 <div className="column">
                   <button className="start" onClick={() => showCard(1)}>Seguinte</button>

@@ -83,7 +83,8 @@ export const HomeStyle = styled.div`
     padding: 50px 20px;
 
     .main-image {
-      max-width: 100%;
+      width: 350px;
+      margin-left: 50px;
     }
 
     .row {
@@ -541,8 +542,8 @@ export const StartStyle  = styled.div`
           margin-top: 40px;
 
           button.start {
-            margin-top: 30px;
-            margin-left: 200px;
+            margin-top: 20px;
+            margin-left: 0;
           }
         }
 
